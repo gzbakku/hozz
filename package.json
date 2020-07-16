@@ -14,6 +14,15 @@
     "fs-extra": "^9.0.1"
   },
   "bin": {
-    "vegana": "./bin/index.js"
+    "hozz": "./bin/index.js"
   },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gzbakku/hozz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gzbakku/vegana/issues"
+  },
+  "homepage": "https://github.com/gzbakku/vegana#readme"
 }
