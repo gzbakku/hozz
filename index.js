@@ -8,7 +8,7 @@ init();
 
 function init(){
 
-  const bank = ['init','serve'];
+  const bank = ['init','serve','keys'];
   const work = process.argv;
   const location = work[1];
   const func = work[2];
@@ -19,6 +19,9 @@ function init(){
     }
     if(func == 'init'){
       return engine.init.init(work[3],location);
+    }
+    if(func == 'keys'){
+      return engine.keys.init(work[3],work[4]);
     }
     if(func == 'founder'){
       common.success('Akku - Tejasav Dutt, you can found me at gzbakku@gmail.com');
@@ -31,6 +34,7 @@ function init(){
     common.tag('vegana cli can do the following things :-');
     common.tag('- init');
     common.tag('- serve');
+    common.tag('- keys');
     common.tag('- founder');
     return;
   }

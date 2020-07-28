@@ -2,7 +2,10 @@
 
 module.exports = {
 
-  init:()=>{
+  init:(name,location)=>{
+
+    console.log(name);
+    console.log(location);
 
   }
 
