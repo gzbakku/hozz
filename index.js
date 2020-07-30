@@ -3,12 +3,13 @@ const engine = require('./engine/index');
 global.common = require('./common');
 global.cmd = require('./cmd');
 global.io = require('./io');
+global.input = require('input');
 
 init();
 
 function init(){
 
-  const bank = ['init','serve','keys'];
+  const bank = ['init','serve','keys','generate'];
   const work = process.argv;
   const location = work[1];
   const func = work[2];
@@ -22,6 +23,9 @@ function init(){
     }
     if(func == 'keys'){
       return engine.keys.init(work[3],work[4]);
+    }
+    if(func == 'generate'){
+      return engine.generate.init(work[3]);
     }
     if(func == 'founder'){
       common.success('Akku - Tejasav Dutt, you can found me at gzbakku@gmail.com');

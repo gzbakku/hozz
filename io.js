@@ -1,4 +1,6 @@
 const fs = require('fs-extra');
+const nfs = require('fs');    //native file system - nfs  //used for sub dir loop
+const path = require('path');
 
 module.exports = {
 
@@ -16,9 +18,6 @@ module.exports = {
       return scriptAddressRef.substring(0,scriptMidPoint);
     },
     ensure:async (location)=>{
-      // if(await io.exists(location)){
-      //   return true;
-      // }
       return fs.ensureDir(location)
       .then(()=>{
         return true;
@@ -37,8 +36,54 @@ module.exports = {
         common.error(err)
         return common.error('failed-create-dir-io');
       });
+    },
+    subDir:(srcpath)=>{
+      return new Promise((resolve,reject)=>{
+        nfs.readdir(srcpath,{withFileTypes:true},(e,files)=>{
+          if(e){
+            common.error(e);
+            common.error("failed-read_sub_directories-subDir-dir-io");
+            reject("failed-read_sub_directories-subDir-dir-io");
+          }
+          let collect = [];
+          for(let file of files){
+            if(file.isDirectory()){
+              collect.push(file.name);
+            }
+          }
+          resolve(collect);
+        });
+      });
+    },
+    files:(srcpath)=>{
+      nfs.readdir(srcpath,{withFileTypes:true},(e,files)=>{
+        if(e){
+          common.error(e);
+          common.error("failed-read_children_files-files-dir-io");
+          reject("failed-read_children_files-files-dir-io");
+        }
+        let collect = [];
+        for(let file of files){
+          if(file.isFile()){
+            collect.push(file.name);
+          }
+        }
+        resolve(collect);
+      });
+    },
+    children:(srcpath)=>{
+      return new Promise((resolve,reject)=>{
+        nfs.readdir(srcpath,(e,files)=>{
+          if(e){
+            common.error(e);
+            common.error("failed-read_chilren_items-children-dir-io");
+            reject("failed-read_chilren_items-children-dir-io");
+          }
+          resolve(files);
+        });
+      });
     }
-  },
+  },//dir ends here
 
   copy:async (from,to)=>{
     return fs.copy(from,to)

@@ -1,0 +1,12 @@
+{
+  "type":"wett",
+  "builder":"hozz",
+  "project_id":null,
+  "user_id":null,
+  "project_key":null,
+  "env":"dev",
+  "port":{
+    "dev":8088,
+    "prod":80
+  }
+}
