@@ -23,7 +23,7 @@ module.exports = {
         common.tell("only one app found : " + apps[0]);
         app = apps[0];
       } else {
-        app = await input.select("choose app",dirs);
+        app = await input.select("choose app",apps);
       }
     }
     const appDir = appsDir + "/" + app;
@@ -63,11 +63,15 @@ module.exports = {
     const methodPath = apiDir + "/" + method + ".js"
     const methodLocation = "/apps/" + app + "/" + api + "/" + method;
 
+    if(await io.exists(methodPath)){
+      return common.error("method with this name already exists in this api");
+    }
+
     //*************************
     //copy method file
 
     const bin = io.dir.app();
-    const engine = bin + "/bin/generate/method_engine.js";
+    const engine = bin + "/generate/method_engine.js";
 
     const copy = await io.copy(engine,methodPath);
     if(!copy){

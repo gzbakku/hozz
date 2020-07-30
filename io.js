@@ -15,7 +15,11 @@ module.exports = {
     app:()=>{
       let scriptAddressRef = process.argv[1];
       let scriptMidPoint = scriptAddressRef.lastIndexOf('\\');
-      return scriptAddressRef.substring(0,scriptMidPoint);
+      let strip = scriptAddressRef.substring(0,scriptMidPoint);
+      if(strip.indexOf("bin") < 0){
+        strip += "/bin";
+      }
+      return strip;
     },
     ensure:async (location)=>{
       return fs.ensureDir(location)

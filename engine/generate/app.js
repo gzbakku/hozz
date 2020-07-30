@@ -37,7 +37,7 @@ module.exports = {
       //************************
       //copy app contoller
       const appDir = io.dir.app();
-      const from = appDir + "/bin/generate/api.js"
+      const from = appDir + "/generate/api.js"
       const to = app_path + "/index.js";
       if(!await io.copy(from,to)){
         return common.error("failed-generate-app_controller-file");

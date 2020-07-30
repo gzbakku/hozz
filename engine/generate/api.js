@@ -21,7 +21,7 @@ module.exports = {
         common.tell("only one app found : " + apps[0]);
         app = apps[0];
       } else {
-        app = await input.select("choose app",dirs);
+        app = await input.select("choose app",apps);
       }
     }
     const appDir = path + "/" + app;
@@ -43,7 +43,7 @@ module.exports = {
     //************************
     //copy method contoller
     const bin = io.dir.app();
-    const from = bin + "/bin/generate/method.js"
+    const from = bin + "/generate/method.js"
     const to = apiDir + "/index.js";
     if(!await io.copy(from,to)){
       return common.error("failed-generate-method_controller-file");
