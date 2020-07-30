@@ -37,6 +37,7 @@ function init(){
     common.error('invalid argument');
     common.tag('vegana cli can do the following things :-');
     common.tag('- init');
+    common.tag('- generate');
     common.tag('- serve');
     common.tag('- keys');
     common.tag('- founder');
