@@ -5,7 +5,7 @@ module.exports = {
   init:async (path)=>{
 
     const appDir = io.dir.app();
-    const baseDir = appDir + "/bin/init";
+    const baseDir = appDir + "/init";
 
     const indexFromPath = baseDir + "/index.js";
     const indexToPath = path + "/index.js";
