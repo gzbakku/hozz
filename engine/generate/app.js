@@ -52,7 +52,7 @@ module.exports = {
       }
 
       const tag = "//do not remove this string or comment this is used by hozz cli to add apps to this project";
-      const initiater = `require("./${name}/index").init();\n\n ${tag}`;
+      const initiater = `require("./${name}/index").init();\n\n\t  ${tag}`;
 
       if(read.indexOf(tag) < 0){
         return common.error("invalid apps controller ,the index file in apps directory does not contain the flag comment where we add the app initiater, please fix this file by adding - '//do not remove this string or comment this is used by hozz cli to add apps to this project' comment inside the initiater function or initiate this app manually inside this file.");

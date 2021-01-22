@@ -1,9 +1,10 @@
 const engine = require('./engine/index');
 
 global.common = require('./common');
-global.cmd = require('./cmd');
+global.cmd = require('./command');
 global.io = require('./io');
 global.input = require('input');
+global.generate_keys = engine.keys.generate.init;
 
 init();
 

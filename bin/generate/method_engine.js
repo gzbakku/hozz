@@ -9,7 +9,9 @@ function init(){
     const log = false,test = false;
 
     //*****************
-    //authenticate
+    /*
+      authenticate - remove this auth check if you dont need auth
+    */
 
     engine.common.tell('called-**location**',log);
 
@@ -23,7 +25,9 @@ function init(){
     engine.common.tell('verified-**location**',log);
 
     //*****************
-    //validate
+    /*
+      validate - remove this validate if you dont need it
+    */
 
     let validate = engine.validate.json({
       name:{type:'string',min:3,max:256},

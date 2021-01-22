@@ -34,7 +34,16 @@ module.exports = {
 
     common.tell("finished-install-npm_modules");
 
-    common.success("hozz project created successfully - " + name);
+    const make_keys = await global.generate_keys(512)
+    .then(()=>{return true;}).catch((e)=>{common.error(e);return false;});
+    if(!make_keys){
+      common.error("please generate wett rsa keys with command '$ hozz keys generate'");
+      return common.error('failed-generate-rsa_keys-wett_keys');
+    }
+
+    common.tell("finished-generate-rsa_keys-wett_keys");
+
+    return common.success("hozz project created successfully - " + name);
 
   }
 

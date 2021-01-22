@@ -59,7 +59,7 @@ module.exports = {
     }
 
     const tag = "//do not remove this string or comment this is used by hozz cli to add apis to this app";
-    const initiater = `require("./${name}/index").init();\n\n  ${tag}`;
+    const initiater = `require("./${name}/index").init();\n\n${tag}`;
 
     if(read.indexOf(tag) < 0){
       return common.error("invalid apis controller ,the index file in api directory does not contain the flag comment where we add the app initiater, please fix this file by adding - '//do not remove this string or comment this is used by hozz cli to add apis to this app' comment inside the initiater function or initiate this app manually inside this file.");

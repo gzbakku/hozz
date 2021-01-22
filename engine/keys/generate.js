@@ -23,8 +23,6 @@ module.exports = {
         privateKeyEncoding: {
           type: 'pkcs8',
           format: 'pem',
-          cipher: 'aes-256-cbc',
-          passphrase: 'top secret'
         }
       },async (err, publicKey, privateKey) => {
 
@@ -38,7 +36,7 @@ module.exports = {
         const write = await io.write(file,JSON.stringify({
           private:privateKey,
           public:publicKey
-        }));
+        },null,1));
         if(!write){
           common.error(file);
           common.error("failed-write_wett_keys");

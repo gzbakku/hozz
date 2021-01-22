@@ -1,6 +1,6 @@
 {
   "name": "hozz",
-  "version": "0.0.24",
+  "version": "0.0.3",
   "description": "its a project structure for wett api framework.",
   "main": "index.js",
   "scripts": {

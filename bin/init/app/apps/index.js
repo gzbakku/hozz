@@ -3,7 +3,7 @@
 
 function init(){
 
-  require('./joker/index').init();
+  require('./main/index').init();
 
   //do not remove this string or comment this is used by hozz cli to add apps to this project
 

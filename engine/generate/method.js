@@ -105,7 +105,7 @@ module.exports = {
     }
 
     const tag = "//do not remove this string or comment this is used by hozz cli to add methods to this api";
-    const initiater = `require("./${method}").init();\n\n ${tag}`;
+    const initiater = `require("./${method}").init();\n\n\t  ${tag}`;
 
     if(readController.indexOf(tag) < 0){
       return common.error("invalid method controller ,the index file in apis directory does not contain the flag comment where we add the method initiater, please fix this file by adding - '//do not remove this string or comment this is used by hozz cli to add methods to this api' comment inside the initiater function or initiate this app manually inside this file.");
