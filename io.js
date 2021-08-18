@@ -1,6 +1,8 @@
 const fs = require('fs-extra');
 const nfs = require('fs');    //native file system - nfs  //used for sub dir loop
 const path = require('path');
+const fsp = require("fs/promises");
+const { isObject } = require('util');
 
 module.exports = {
 
@@ -60,20 +62,23 @@ module.exports = {
       });
     },
     files:(srcpath)=>{
-      nfs.readdir(srcpath,{withFileTypes:true},(e,files)=>{
-        if(e){
-          common.error(e);
-          common.error("failed-read_children_files-files-dir-io");
-          reject("failed-read_children_files-files-dir-io");
-        }
-        let collect = [];
-        for(let file of files){
-          if(file.isFile()){
-            collect.push(file.name);
+      return new Promise((resolve,reject)=>{
+        nfs.readdir(srcpath,{withFileTypes:true},(e,files)=>{
+          if(e){
+            common.error(e);
+            common.error("failed-read_children_files-files-dir-io");
+            reject("failed-read_children_files-files-dir-io");
           }
-        }
-        resolve(collect);
+          let collect = [];
+          for(let file of files){
+            if(file.isFile()){
+              collect.push(file.name);
+            }
+          }
+          resolve(collect);
+        });
       });
+      
     },
     children:(srcpath)=>{
       return new Promise((resolve,reject)=>{
@@ -125,6 +130,12 @@ module.exports = {
     } else {
       return false;
     }
+  },
+
+  readRaw:async (location)=>{
+    if(!await io.exists(location)){return false;}
+    let run = await fsp.readFile(location);
+    return run;
   },
 
   write:(location,data)=>{

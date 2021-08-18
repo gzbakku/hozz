@@ -1,7 +1,6 @@
 
 function endSession(res){
-  res.set('Content-Type', 'application/json');
-  res.send({
+  res.json({
     result:'error',
     error:'session_expired'
   });
@@ -9,8 +8,7 @@ function endSession(res){
 }
 
 function invalidRequest(res){
-  res.set('Content-Type', 'application/json');
-  res.send({
+  res.json({
     result:'error',
     error:'invalid_request'
   });
@@ -18,8 +16,7 @@ function invalidRequest(res){
 }
 
 function invalidPermissions(res){
-  res.set('Content-Type', 'application/json');
-  res.send({
+  res.json({
     result:'error',
     error:'not_found-authorisation'
   });
@@ -27,8 +24,7 @@ function invalidPermissions(res){
 }
 
 function technicalError(res){
-  res.set('Content-Type', 'application/json');
-  res.send({
+  res.json({
     result:'error',
     error:'backend_down'
   });
@@ -36,8 +32,7 @@ function technicalError(res){
 }
 
 function down(res){
-  res.set('Content-Type', 'application/json');
-  res.send({
+  res.json({
     result:'error',
     error:'backend_down'
   });
@@ -45,8 +40,7 @@ function down(res){
 }
 
 function error(res,error){
-  res.set('Content-Type', 'application/json');
-  res.send({
+  res.json({
     result:'error',
     error:error
   });
@@ -54,8 +48,7 @@ function error(res,error){
 }
 
 function success(res,data,message){
-  res.set('Content-Type', 'application/json');
-  res.send({
+  res.json({
     result:'success',
     data:data,
     message:message

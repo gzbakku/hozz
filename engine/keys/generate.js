@@ -42,6 +42,7 @@ module.exports = {
           common.error("failed-write_wett_keys");
           reject("failed-write_wett_keys");
         } else {
+          common.success("wett-rsa_keys-generated");
           resolve();
         }
 

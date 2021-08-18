@@ -1,6 +1,6 @@
 {
   "name": "hozz",
-  "version": "0.0.3",
+  "version": "2.0.0",
   "description": "its a project structure for wett api framework.",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,11 @@
     "chalk": "^4.1.0",
     "chokidar": "^3.4.1",
     "cross-spawn": "^7.0.3",
+    "dockerode": "^3.3.0",
     "fs-extra": "^9.0.1",
-    "input": "^1.0.1"
+    "input": "^1.0.1",
+    "jszip": "^3.7.1",
+    "unzipper": "^0.10.11"
   },
   "bin": {
     "hozz": "./bin/index.js"

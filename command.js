@@ -45,13 +45,13 @@ module.exports=  {
         reject('invalid_cmd');
       }
 
-      exec(cmd,(err, stdout, stderr)=>{
+      const runner = exec(cmd,(err, stdout, stderr)=>{
         if(err){
           console.log(err);
           reject(err);
         }
         if(stderr){
-          console.log('stderr');
+          console.log(stderr);
           resolve(stderr);
         }
         if(stdout){
@@ -59,6 +59,9 @@ module.exports=  {
           resolve(stdout);
         }
       });
+
+      // runner.stdout.on('data', (data)=>{console.log(data);});
+      runner.stdout.pipe(process.stdout);
 
     });
 

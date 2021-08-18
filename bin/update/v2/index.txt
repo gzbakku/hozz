@@ -1,0 +1,12 @@
+
+
+
+//---------------------------
+//add following line to add enviorment file reading capability
+//---------------------------
+/*
+
+//add this line to app starter index file
+require('dotenv').config();
+
+*/

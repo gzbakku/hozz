@@ -25,6 +25,24 @@ module.exports = {
       return common.error("failed-prepare-app-directory");
     }
 
+    const dockerFromPath = baseDir + "/Dockerfile";
+    const dockerToPath = path + "/Dockerfile";
+    if(!await io.copy(dockerFromPath,dockerToPath)){
+      return common.error("failed-prepare-app-directory");
+    }
+
+    const dockerignoreFromPath = baseDir + "/.dockerignore";
+    const dockerignoreToPath = path + "/.dockerignore";
+    if(!await io.copy(dockerignoreFromPath,dockerignoreToPath)){
+      return common.error("failed-prepare-app-directory");
+    }
+
+    const gitignoreFromPath = baseDir + "/.gitignore";
+    const gitignoreToPath = path + "/.gitignore";
+    if(!await io.copy(gitignoreFromPath,gitignoreToPath)){
+      return common.error("failed-prepare-app-directory");
+    }
+
     const hozzFromPath = baseDir + "/hozz.json";
     const hozzToPath = path + "/hozz.json";
     if(!await io.copy(hozzFromPath,hozzToPath)){

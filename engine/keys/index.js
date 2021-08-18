@@ -8,16 +8,20 @@ module.exports = {
 
   init:async (todo,size)=>{
 
-    if(!size || isNaN(size)){
-      size = 512;
-    }
-
-    if(size < 512){
-      return common.error("key size cannot be smaller then 512 bits");
+    while(true){
+      size = await input.text("please provide a rsa key size from 256 and above.",{
+        default:"512"
+      });
+      size = Number(size);
+      if(size < 512){
+        common.error("rsa key size cannot be less then 512");
+      } else {
+        break;
+      }
     }
 
     if(todo !== "generate" && todo !== "remake"){
-      return common.error("please provide a valid key action of generate or remake");
+      todo = await input.select("please select a valid api",['generate','remake']);
     }
 
     if(todo === "generate"){
@@ -27,7 +31,7 @@ module.exports = {
       }
     }
 
-    generate.init(size);
+    await generate.init(size);
 
   }
 

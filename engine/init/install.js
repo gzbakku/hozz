@@ -4,7 +4,7 @@ module.exports = {
 
   init:(path)=>{
     process.chdir(path);
-    return cmd.run('npm i')
+    return cmd.run('npm i wett-uws dotenv')
     .then((data)=>{
       return true;
     })

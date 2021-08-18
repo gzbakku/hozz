@@ -6,8 +6,10 @@ const resp = require('./resp');
 global.engine.resp = resp;
 global.engine.appy = resp;
 
-const wett_keys = require('./secure/wett_keys.json');
 const app_controller = require('./apps/index');
+const websocket_controller = require('./websocket.js');
+const server_controller = require('./server.js');
+const auth_controller = require('./auth.js');
 
 async function init(){
 
@@ -19,9 +21,14 @@ async function init(){
 
   //all wett global properties initiate here before apis are initiated
 
-  engine.auth.loadKeys(wett_keys.private,wett_keys.public);
-  await engine.server.init(process.env.PORT || 8080,true,'50mb');
+  //---------------------------
+  //start controllers
+  //---------------------------
+
   app_controller.init();
+  websocket_controller.init();
+  auth_controller.init();
+  server_controller.init();
 
 }
 

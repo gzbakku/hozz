@@ -9,9 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "firebase-admin": "^9.0.0",
-    "request": "^2.88.2",
-    "wett": "^0.0.855"
-  }
+  "dependencies": {}
 }

@@ -1,0 +1,27 @@
+
+
+
+
+//---------------------------
+//add following handlers to app starter index file inside app directory
+//---------------------------
+/*
+
+const app_controller = require('./apps/index');
+const websocket_controller = require('./websocket.js');
+const server_controller = require('./server.js');
+const auth_controller = require('./auth.js');
+
+//this is the default app handler
+app_controller.init();
+
+//add webocket handlers in webocket.js
+websocket_controller.init();
+
+//load auth keys and add sessions handler function to auth api in auth.js
+auth_controller.init();
+
+//handle all http routes handler and initiate server in server.js 
+server_controller.init();
+
+*/
